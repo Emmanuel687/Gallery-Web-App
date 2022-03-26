@@ -1,0 +1,102 @@
+{%extends 'base.html'%} {% block content %} {{block.super}}
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center  head">
+            My Gallery
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Emmanuel Gallery</h4>
+            <p class="card-text">This is my Personal Gallery where I display my photos.</p>
+            <h5 class="text-center">This app allows a user to:</h5>
+            *Click on a single photo to expand it and also view the details of the photo. <br> *Search for different categories of photos. <br> * Copy the link of a photo to share with your friends. <br> *View photos that interest you <br> *View photos
+            based on the location they were taken <br>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        {% for image in images %}
+
+        <div id="images" class="col-md-4">
+            <img style="margin-top: 20px;margin-bottom:0px; size: 20rem;" class="img-fluid" src="{{ image.image.url }}" alt="{{ image.image_name }}" data-toggle="modal" data-target="#modal{{image.id}}">
+
+        </div>
+
+        {% endfor %}
+    </div>
+    {% for image in images %}
+
+    <!-- Grid column -->
+
+    <!--Modal: Name-->
+    <div class="modal fade" id="modal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Body-->
+                <div class="modal-body mb-0 p-0">
+                    <div class="embed-responsive embed-responsive-16by9
+                z-depth-1-half">
+
+
+                        <img class="embed-responsive-item" src="{{ image.image.url }}" alt="{{ image.image_name }}" allowfullscreen>
+
+                    </div>
+                </div>
+                <h3 class="embed-responsive-item text-center mr-4 mt-2" style="text-decoration: underline; color:black;">{{ image.image_name }}</h3>
+                <span class="mr-4 text-center"><h5>{{ image.description }}</h5></span>
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn-floating btn-sm btn-tw"><i class="fas
+                  fa-fighter-jet"></i> {{ image.location }}</a>
+                    <a type="button" class="btn-floating btn-sm btn-gplus"><i
+                  class="fas fa-grip-horizontal"></i> {{ image.category }}</a>
+                    <div>
+                        <button type="button" class="btn btn-outline-info btn-rounded btn-md ml-4" onclick="myFunction('{{image.id}}.url')">Copy Link</button>
+                        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                    </div>
+
+                    <div>
+                        <input class="form-control input-lg" type="text" value="{{image.image.url}}" id="{{image.id}}.url">
+                    </div>
+
+
+                </div>
+
+            </div>
+            <!--/.Content-->
+
+        </div>
+    </div>
+    <!--Modal: Name-->
+
+    {% endfor %}
+
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-dark" href="">Emmanuel Koech</a><br>
+            <i class="fab fa-facebook-f"></i>
+
+            <!-- Twitter -->
+            <i class="fab fa-twitter"></i>
+
+            <!-- Instagram -->
+            <i class="fab fa-instagram"></i>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <script>
+        function myFunction(element) {
+            var copyText = document.getElementById(element);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999)
+            document.execCommand("copy");
+        }
+    </script>
+
+</div>{% endblock %}

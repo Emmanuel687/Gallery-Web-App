@@ -1,8 +1,14 @@
-h1{
-    color: rgb(113, 0, 128);
+.head {
+    color: crimson;
+    font-size: xx-large;
+    font-weight: 600;
 }
-body{
-    background-color: rgb(12, 0, 0);
-    color: rgb(243, 237, 243);
-    font-size: 15px;
+
+body {
+    background-color: gainsboro;
+}
+
+.card {
+    background-color: rgb(181, 198, 247);
+    box-shadow: rgb(129, 126, 126);
 }

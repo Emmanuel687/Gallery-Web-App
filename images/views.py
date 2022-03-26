@@ -1,42 +1,31 @@
 from django.shortcuts import render
-from django.http import Http404
-from .models import Location,Category,Image
-from django.core.exceptions import ObjectDoesNotExist
+from django.http  import HttpResponse, Http404
+from .models import Category, Location, Image
+
 
 # Create your views here.
-
-
 def welcome(request):
-    images = Image.all_images()
-    return render (request,'index.html',{"images":images})
-
-def search(request):
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_images = Image.search_image(search_term)
-        message = f"{search_term}"
-
-        return render(request,"search.html",{"message":message,"images":searched_images})
-
-    else:
-        message = "You haven't searched for any category"
-        return render(request,"search.html",{"message":message})
-
-def image(request,image_id):
     try:
-        image = Image.get_image_by_id(image_id)
-
-    except ObjectDoesNotExist:
+        category = Category.objects.all()
+        location = Location.objects.all()
+        images = Image.objects.all()
+    except:
         raise Http404()
-    return render(request,"image.html",{"image":image})
 
-def location(request):
-    if 'location' in request.GET and request.GET["location"]:
-        location = request.GET.get("location")
-        searched_images = Image.filter_by_location(location)
-        message = f"{location}"
-        return render(request,"search.html",{"message":message,"images":searched_images})
+    return render(request, 'index.html', {"location": location,"category":category,"images":images})
+
+def search_results(request):
+    if 'name' in request.GET and request.GET["name"]:
+        search_term = request.GET.get("name")
+        searched_name = Image.search_by_name(search_term)
+        message = f"{search_term}"
+        print(searched_name)
+
+        return render(request, 'search.html', {"message": message, "image": searched_name})
 
     else:
-        message = "select location to filter"
-        return render(request,"search.html",{"message":message})
+        message = "You haven't searched for any term"
+        return render(request, 'search.html', {'message': message})
+
+
+
