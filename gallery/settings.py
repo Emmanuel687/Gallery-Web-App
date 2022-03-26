@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -120,6 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+cloudinary.config( 
+  cloud_name = "emmanuel687", 
+  api_key = "796298925861151", 
+  api_secret = "gCImM06WuKyPbZ-hRopEt13VuK4" 
+)
 
 
 # Default primary key field type

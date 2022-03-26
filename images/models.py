@@ -8,6 +8,7 @@ class Location(models.Model):
         return self.name
 
 
+
 class Category(models.Model):
     name = models.CharField(max_length =30)
 
