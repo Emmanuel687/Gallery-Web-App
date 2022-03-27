@@ -8,13 +8,26 @@ This is a Gallery Web-App page which shows several pictures in  collection with 
 3.Run project using python3.8 manage.py runserver.
 
  
-## About
+## contributing
+If you have a suggestion that would make this better, please fork the repo and create a pull request.
+
+1.Fork the Project.
+2.Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3.Commit your Changes (git commit -m 'Add some AmazingFeature')
+4.Push to the Branch (git push origin feature/AmazingFeature)
+5.Open a Pull Request
 
 ## Known Bugs
 There are no known bugs.
 
 ## Technologies Used
+1.Python3.8
 
+2.Django3.2.7
+
+3.Flask-Bootstrap==3.3.7.1
+
+4.CSS
 ## Support and contact details
 For support and contact details call:0713598794 Email at koechemmanuel@gmail.com
 
